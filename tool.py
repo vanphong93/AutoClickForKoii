@@ -10,7 +10,7 @@ y=275
 # The distance between two points in the Y direction
 distance=347-275
 # Time per test
-timeCheck=15
+timeCheck=60
 # Restart (True or False)
 autoRestart=False
 # If autoRestart=True, please input passWord when login and change IconApp.png
@@ -26,11 +26,11 @@ while True:
     if isDoing:
         print("Koii is running")
         for pointY in range(y, y + distance*number,distance):
-                # pag.moveTo(x,pointY)
-                time.sleep(6)
                 try:
                     start = pag.locateOnScreen('play1.png',grayscale=True,confidence=0.8)
+                    previous=pag.position()
                     pag.click(start)
+                    pag.moveTo(previous)
                     print("I see")
                 except pag.ImageNotFoundException:
                      pass
@@ -59,4 +59,4 @@ while True:
     #             time.sleep(20)
     #         except pag.ImageNotFoundException:
     #             print("Sorry, Image cannot be recognized")
-    # time.sleep(timeCheck)
+    time.sleep(timeCheck)
